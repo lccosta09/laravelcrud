@@ -17,3 +17,9 @@ RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 RUN apt update && apt install -y git
 
 WORKDIR /var/www/html/laravel_crud
+
+RUN composer install
+
+RUN chmod 777 -R storage/
+
+RUN php artisan migrate
